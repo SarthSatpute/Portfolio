@@ -56,7 +56,6 @@ const NavbarHome = ({ secRef, isMobile }) => {
     let xTo = gsap.quickTo(".cursor-circle", "x", { duration: 0.5, ease: "expo.out" });
     let yTo = gsap.quickTo(".cursor-circle", "y", { duration: 0.5, ease: "expo.out" });
 
-    // Add mousemove event listener to move the cursor circle
     const moveCursor = (e) => {
       xTo(e.clientX);
       yTo(e.clientY);
@@ -66,12 +65,11 @@ const NavbarHome = ({ secRef, isMobile }) => {
     gsap.from(".navhome:before",
 
       {
-        x: 0,                // Move to the original position
-        borderRadius: "0",   // Set border radius back to 0
-        border: "1px solid", // Change the border color
+        x: 0,               
+        borderRadius: "0",   
+        border: "1px solid", 
         duration: 2,
       });
-    // Cleanup the event listener when the component is unmounted
     return () => {
       window.removeEventListener("mousemove", moveCursor);
     };
@@ -270,7 +268,7 @@ const NavbarHome = ({ secRef, isMobile }) => {
                     <input type="email" pattern='^\w+@[a-zA-z]+\.(com|in)' className="form-control form-control-sm bg-transparent gradient-title1 g-grey" id="exampleFormControlInput1" name='email' placeholder="name@example.com" onInvalid={(e) => {
                       e.target.setCustomValidity("Please enter a valid email address with .com or .in domain.");
                     }} onInput={(e) => {
-                      e.target.setCustomValidity("");  // Reset custom message when user starts typing
+                      e.target.setCustomValidity("");  
                     }} required />
                   </div>
                   <div className="mb-3" data-bs-theme='dark'>
