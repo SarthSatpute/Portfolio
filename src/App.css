@@ -35,8 +35,9 @@ body,#root{
   background:linear-gradient(to right, #752c2c, #fccfbb, #700303);
 }
 .g-blue {
-  background: linear-gradient(to right, #283bb5, #82a1fc, #00104e);
+  background: linear-gradient(to right, #ff9800, #ff6f00, #ff4500); /* Orange shades */
 }
+
 .g-yellow {
   background: linear-gradient(to right, #534d29, #baa539, #554800);
 }
@@ -106,4 +107,65 @@ a{
 
 .navbar-custom .form-control {
   width: 250px;
+}
+
+/* Achievements & Responsibilities Section */
+.achievements-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 40px;
+}
+.achievements-container {
+  display: flex;
+  justify-content: space-between; /* Achievements on left, Responsibilities on right */
+  align-items: flex-start;
+  gap: 40px; /* Space between the two sections */
+  margin-top: 40px;
+  padding: 20px;
+  flex-wrap: wrap; /* Ensures responsiveness on smaller screens */
+}
+
+.achievements-list, .responsibilities-list {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+  min-width: 300px; /* Ensures sections don't shrink too much */
+}
+
+.sub-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffcc00;
+  margin-bottom: 15px;
+  text-align: center; /* Centers heading */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  font-size: 18px;
+  margin: 10px 0;
+  padding-left: 25px;
+  position: relative;
+  color: #ffcc00;
+}
+
+
+/* Mobile View Fix */
+@media (max-width: 768px) {
+  .achievements-container {
+    flex-direction: column; /* Stacks Achievements & Responsibilities */
+    align-items: center;
+  }
+
+  .achievements-list, .responsibilities-list {
+    width: 100%;
+    max-width: 500px;
+  }
 }
