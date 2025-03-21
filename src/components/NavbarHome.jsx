@@ -56,6 +56,7 @@ const NavbarHome = ({ secRef, isMobile }) => {
     let xTo = gsap.quickTo(".cursor-circle", "x", { duration: 0.5, ease: "expo.out" });
     let yTo = gsap.quickTo(".cursor-circle", "y", { duration: 0.5, ease: "expo.out" });
 
+    // Add mousemove event listener to move the cursor circle
     const moveCursor = (e) => {
       xTo(e.clientX);
       yTo(e.clientY);
@@ -65,11 +66,12 @@ const NavbarHome = ({ secRef, isMobile }) => {
     gsap.from(".navhome:before",
 
       {
-        x: 0,               
-        borderRadius: "0",   
-        border: "1px solid", 
+        x: 0,                // Move to the original position
+        borderRadius: "0",   // Set border radius back to 0
+        border: "1px solid", // Change the border color
         duration: 2,
       });
+    // Cleanup the event listener when the component is unmounted
     return () => {
       window.removeEventListener("mousemove", moveCursor);
     };
@@ -86,7 +88,7 @@ const NavbarHome = ({ secRef, isMobile }) => {
           <a className='nav-link rotate-link pl-2 pr-2' href="#section-2" >About</a>
           <a className='nav-link rotate-link pl-2 pr-2' href="#section-3" >Experience</a>
           <a className='nav-link rotate-link pl-2 pr-2' href="#section-4" >Projects</a>
-          <a className='nav-link rotate-link pl-2 pr-2' href="#section-5" >Contact</a>
+          <a className='nav-link rotate-link pl-2 pr-2' href="#section-6" >Contact</a>
           <a className='nav-link rotate-link pl-2 pr-2' target='_blank' href="https://drive.google.com/file/d/1DW6Up2Tuo2QGRW1vhbB7XbwViTBnOTU0/view?usp=sharing" style={{ marginTop: "-13px" }}>CV<MdArrowOutward /></a>
         </div>
 
@@ -171,7 +173,7 @@ const NavbarHome = ({ secRef, isMobile }) => {
                 />
                 <p className="" style={{ color: "#8a3535" }}>An brief introductory chapter regarding..</p>
                 <h1 className="hero-heading gradient-title1 g-redish hero-bannerr">
-                  About Sarth Satpute and my Tech Stack.
+                  About me
                   <a href="https://github.com/SarthSatpute" target="_blank" aria-label="github-profile"> GitHub <MdArrowOutward color='red' /></a>
                 </h1>
                 <p className="hero-text gradient-title1 g-redish opacity-75">
@@ -212,7 +214,8 @@ const NavbarHome = ({ secRef, isMobile }) => {
 
             <div className="hero-container left-side">
               <div className="hero-content">
-                <p className="hero-text" style={{ color: "#9595fc70" }}>A look at my recent work...</p>
+              <p className="hero-text" style={{ color: "#ff9800" }}>A look at my recent work...</p>
+
                 <h1 className="hero-heading gradient-title1 g-blue">
                 AI & 3D Development Internship at Artosci.
                   
@@ -224,9 +227,7 @@ const NavbarHome = ({ secRef, isMobile }) => {
                 Developed problem-solving skills, technical research abilities, and gained hands-on Unity experience.
         
                 </p>
-                <div className="parabox-list">
-                  <Tabs />
-                </div>
+               
               </div>
             </div>
           </motion.div>
@@ -238,6 +239,46 @@ const NavbarHome = ({ secRef, isMobile }) => {
           <Slider secRef={secRef} isMobile={isMobile} />
 
         </section>
+
+        <section className='p-relative' id='section-5'>
+  <motion.div
+    initial={isMobile ? undefined : { opacity: 0, y: "-100px" }}
+    whileInView={isMobile ? undefined : { opacity: 1, y: "0px" }}
+    viewport={isMobile ? undefined : { margin: "-400px", once: false }}
+    transition={{ delay: 0.3 }}
+    exit={isMobile ? undefined : { opacity: 0, y: "400px" }}
+    className="hero p-sticky"
+  >
+    <div className="hero-container">
+      <div className="hero-content">
+        <h1 className="hero-heading gradient-title1 g-purple">
+          Achievements & Responsibilities
+        </h1>
+        
+        <div className="achievements-container">
+          <div className="achievements-list">
+            <h2 className="sub-heading">🏆 Achievements</h2>
+            <ul>
+              <li>MTSE Scholar (Maharashtra Talent Search Exam - 2019)</li>
+              <li>AIMS Talent Search Examination (AIR 4)</li>
+              <li>Problem Solving - 300+ problems solved</li>
+              <li>Hackathon Achievements (Technovation, Level-Supermind)</li>
+            </ul>
+          </div>
+
+          <div className="responsibilities-list">
+            <h2 className="sub-heading">🎯 Responsibilities</h2>
+            <ul>
+              <li>Microsoft Learn Student Club - Secretary</li>
+              <li>Debuggers’ Club - Placement Coordinator</li>
+              <li>Innovera 2025 - National Level Hackathon, Team Lead of Hackathon Operations.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </motion.div>
+</section>
 
 
         <section className='p-relative' id='section-5'>
@@ -268,7 +309,7 @@ const NavbarHome = ({ secRef, isMobile }) => {
                     <input type="email" pattern='^\w+@[a-zA-z]+\.(com|in)' className="form-control form-control-sm bg-transparent gradient-title1 g-grey" id="exampleFormControlInput1" name='email' placeholder="name@example.com" onInvalid={(e) => {
                       e.target.setCustomValidity("Please enter a valid email address with .com or .in domain.");
                     }} onInput={(e) => {
-                      e.target.setCustomValidity("");  
+                      e.target.setCustomValidity("");  // Reset custom message when user starts typing
                     }} required />
                   </div>
                   <div className="mb-3" data-bs-theme='dark'>
